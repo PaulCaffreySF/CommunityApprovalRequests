@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION">
+    <aura:attribute name="newA" type="Id"/>
+    <aura:attribute name="requestAction" type="String"/>
+</aura:event>

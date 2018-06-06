@@ -1,0 +1,5 @@
+<design:component >
+    <design:attribute name="showImg" label="Display Approval Icon?" datasource="true,false" default="true" />
+    <design:attribute name="cmpTitle" label="Component Title" default="Items to Approve" />
+    <design:attribute name="cmpLabel" label="Title Label" default="approval requests" />
+</design:component>

@@ -1,0 +1,29 @@
+<!--
+  Copyright (c) 2018, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: BSD-3-Clause
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ -->
+
+<aura:component controller="ApprovalListCnt">
+    
+    <lightning:overlayLibrary aura:id="overlayLib2"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="itemId" type="Id"/> 
+    <aura:attribute name="status" type="String"/> 
+    <aura:attribute name="comment" type="String"/> 
+    <aura:attribute name="reloadModal" type="String"/>
+    
+    <lightning:textarea aura:id="reqComment" name="myTextArea" value="{!v.comment}" label="{!$Label.c.Comment}" maxlength="300" />
+    <lightning:button name="cancel" label="Cancel" onclick="{!c.handleCancel}" />
+    <aura:if isTrue="{!v.status == 'Approve Request'}">
+        <lightning:button name="approve" label="Approve" variant="brand" onclick="{!c.approveItem}" />   
+        <aura:set attribute="else">
+            <lightning:button name="reject" label="Reject" variant="destructive" onclick="{!c.rejectItem}" />   
+        </aura:set>
+    </aura:if>
+    
+    
+</aura:component>

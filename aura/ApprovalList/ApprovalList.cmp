@@ -1,0 +1,73 @@
+<!--
+  Copyright (c) 2018, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: BSD-3-Clause
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ -->
+
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" controller="ApprovalListCnt" access="global">
+    
+    <aura:attribute name="myApprovals" type="Map[]"/>
+    <aura:attribute name="showImg" type="String" access="global" default="true"/>
+    <aura:attribute name="cmpTitle" type="string" access="global" default="Items to Approve"/>
+    <aura:attribute name="cmpLabel" type="string" access="global" default="Approval Requests"/>
+    
+    <aura:handler name="reloadEvent" event="c:reloadApprovals" action="{!c.handleComponentEvent}"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <lightning:spinner aura:id="mySpinner" variant="brand" size="large" alternativeText="Populating table"/>
+    
+    <div id="container" class="slds">
+        <div class="slds-page-header">
+            <div class="slds-grid">
+                <div class="slds-col slds-has-flexi-truncate">
+                    <div class="slds-media slds-no-space slds-grow">
+                        <div class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-user" title="Description of icon when needed">
+                                <aura:if isTrue="{!v.showImg == 'true'}">
+                                    <lightning:icon iconName="standard:approval" size="medium" alternativeText="Indicates approval"/>                            
+                                </aura:if>
+                            </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <p class="slds-line-height_reset">{!v.cmpLabel}</p>
+                            <h1 class="slds-page-header__title slds-m-right_small slds-align-middle slds-truncate">{!v.cmpTitle}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tableCont slds-scrollable--y" aura:id="theTable">
+            <table class="slds-table slds-table--bordered slds-table--fixed-layout">
+                <thead>
+                    <tr class="slds-text-title--caps">
+                        <th scope="col" class="numCol"></th>
+                        <th scope="col">
+                            <div class="slds-truncate headPad" title="Nom">{!$Label.c.Related_To}</div>
+                        </th>
+                        <th scope="col" class="">
+                            <div class="slds-truncate headPad" title="Nom">{!$Label.c.Type}</div>
+                        </th>
+                        <th scope="col" class="phone">
+                            <div class="slds-truncate headPad" title="Nom">{!$Label.c.Comments}</div>
+                        </th>
+                        <th scope="col" class="dateCol phone ipad">
+                            <div class="slds-truncate headPad" title="Nom">{!$Label.c.Date_Submitted}</div>
+                        </th>
+                        <th scope="col" class="col1">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <aura:iteration items="{!v.myApprovals}" var="approval">
+                        <c:ApprovalListItem approval="{!approval}"/>
+                    </aura:iteration>
+                </tbody>
+            </table>                
+        </div>
+        
+        <div aura:id="noItems" class="slds-hide" id="noMessage">
+            {!$Label.c.No_Request_Message}
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,21 @@
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+.THIS .dateCol {
+    max-width: 150px;
+    width: 15%;
+}
+
+.THIS #actions {
+    overflow: visible;
+    width: 60px;
+}
+
+.THIS .numCol {
+    width: 2.75rem;
+    text-align: center;
+}

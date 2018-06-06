@@ -1,0 +1,42 @@
+<!--
+  Copyright (c) 2018, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: BSD-3-Clause
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ -->
+
+<aura:component controller="ApprovalListCnt" access="global">
+    
+    <aura:attribute name="approval" type="ProcessInstanceWorkItem" access="global"/>
+    <aura:attribute name="parentAttributeName" type="String"/>
+    <aura:attribute name="reload" type="Boolean" default="false"/>
+    
+    <aura:registerEvent name="reloadEvent" type="c:reloadApprovals"/>
+    
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+    
+    <tr>
+        <td class="slds-row-number numCol"></td>
+        <td class="slds-truncate">
+            <a onclick="{!c.navigateTo}">{!v.approval.RelatedTo}</a>
+        </td>
+        <td class="slds-truncate">
+            {!v.approval.ObjectType}
+        </td>
+        <td class="slds-truncate">
+            {!v.approval.Comment} 
+        </td>
+        <td class="dateCol slds-truncate">
+            <!--	<ui:outputDate value="{!v.approval.CreatedDate}"/>  -->
+            <lightning:formattedDateTime value="{!v.approval.CreatedDate}" year="numeric" month="numeric" day="numeric" hour="2-digit" minute="2-digit"/>
+            <!--Look at swapping to formattedDate-->
+        </td>
+        <td id="actions">
+            <lightning:buttonMenu alternativeText="Request Actions" menuAlignment="right" onselect="{!c.handleAction}" iconSize="x-small">
+                <lightning:menuItem label="Approve" value="Approve Request"/>
+                <lightning:menuItem label="Reject" value="Reject Request"/>
+            </lightning:buttonMenu>
+        </td>
+    </tr>
+    
+</aura:component>

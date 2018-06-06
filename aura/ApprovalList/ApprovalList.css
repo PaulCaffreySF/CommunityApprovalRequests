@@ -1,0 +1,58 @@
+/*
+ * Copyright (c) 2018, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+.THIS#container {
+    max-height: 500px;
+    height: 100%;
+    width: 100%;
+}
+
+.THIS .tableCont {
+    max-height: 500px;
+    min-height: 200px;
+    height: 100%;
+}
+
+.THIS #noMessage {
+    padding: 6%;
+    text-align: center;
+    background: #FFF;
+}
+
+.THIS .col1 {
+    width: 60px;
+}
+
+.THIS .dateCol {
+    max-width: 150px;
+    width: 15%;
+}
+
+.THIS .numCol {
+    width: 2.75rem;
+}
+
+.THIS .headPad {
+    padding: .3rem;
+}
+
+.THIS .slds-page-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+@media (max-width: 750px) {
+    .THIS .phone {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .THIS .ipad {
+        display: none;
+    }
+}
